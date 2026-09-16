@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="voucher diskon"/>
+        <attribute name="authors" value="agan"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-09-15 03:15:38 PM"/>
+        <attribute name="created" value="YWdhbjtERVNLVE9QLUFURDFVUTI7MjAyNi0wOS0xNTswMjoyODoyNiBQTTsyNzYx"/>
+        <attribute name="edited" value="YWdhbjtERVNLVE9QLUFURDFVUTI7MjAyNi0wOS0xNTswMzoxNTozOCBQTTsxOzI4Njk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="totalBelanja, diskon, totalBayar" type="Real" array="False" size=""/>
+            <declare name="umurAkun" type="Integer" array="False" size=""/>
+            <declare name="kategori" type="String" array="False" size=""/>
+            <declare name="pakaiPromoLain" type="Boolean" array="False" size=""/>
+            <output expression="&quot;Masukkan total belanja:&quot;" newline="True"/>
+            <input variable="totalBelanja"/>
+            <output expression="&quot;Masukkan umur akun:&quot;" newline="True"/>
+            <input variable="umurAkun"/>
+            <output expression="&quot;Masukkan kategori produk:&quot;" newline="True"/>
+            <input variable="kategori"/>
+            <output expression="&quot;Apakah pakai promo lain?:&quot;" newline="True"/>
+            <input variable="pakaiPromoLain"/>
+            <if expression="totalBelanja &gt;= 150000 AND umurAkun &gt;= 30 AND kategori = &quot;Elektronik&quot; AND pakaiPromoLain = false">
+                <then>
+                    <assign variable="diskon" expression="totalBelanja*0.15"/>
+                    <if expression="diskon = 50000">
+                        <then>
+                            <assign variable="diskon" expression="50000"/>
+                        </then>
+                        <else/>
+                    </if>
+                    <assign variable="totalBayar" expression="totalBelanja-diskon"/>
+                    <output expression="&quot; Voucher berhasil dipasang! Diskon: &quot; &amp; diskon &amp;   &quot; | Total Bayar: &quot;&amp; totalBayar" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="diskon" expression="0"/>
+                    <assign variable="totalBayar" expression="totalbelanja"/>
+                    <output expression="&quot; Voucher tidak bisa digunakan:&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
